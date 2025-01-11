@@ -54,10 +54,6 @@ function SettingBar() {
         setSpacing
     } = useSettingBarStore();
 
-
-    getYouTubeVideoId(url);
-    console.log(videoId, url)
-
     // Fonction pour update le url
 
     const HandleChangeUrl = (e) => {

@@ -1,5 +1,5 @@
 import {create} from 'zustand';
-import { persist } from 'zustand/middleware';
+import { persist, createJSONStorage } from 'zustand/middleware';
 
 const useSettingBarStore = create(
   persist(
@@ -52,6 +52,7 @@ const useSettingBarStore = create(
     }),
     {
       name: 'setting-bar-storage',
+      storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
     }
   )
 );
