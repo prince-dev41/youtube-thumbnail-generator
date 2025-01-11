@@ -1,8 +1,33 @@
 import { ChartNoAxesColumn, Clock, Moon, Sun, UserCircle2 } from "lucide-react";
 import IconWithTooltip from "./IconWithTooltip";
-import useSettingBarStore from '../store/useSettingBar'; // Assure-toi de mettre le bon chemin
+import useSettingBarStore from '../store/useSettingBar';
+import useThumbnailDataStore from '../store/useThumbnailData';
 import { formatSize } from "../functions/FormatedData";
+import { getYouTubeVideoId } from '../functions/GetYoutubeVideoId.jsx';
 
+import toast from 'react-hot-toast';
+const simulateAsyncOperation = () => {
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => resolve("Données chargées !"), 2000);
+    });
+toast.promise(
+  promise,
+  {
+    loading: "Chargement...",
+    success: "Données récupérées avec succès !",
+    error: "Erreur lors du chargement des données.",
+  },
+  {
+    style: {
+      backgroundColor: "#fff",
+      color: "#333",
+      borderRadius: "20px",
+      opacity: 0.1
+    },
+  }
+);
+
+  };
 function SettingBar() {
     const {
         url,
@@ -29,6 +54,11 @@ function SettingBar() {
         setSpacing
     } = useSettingBarStore();
 
+    const {videoId, setVideoId} = useThumbnailDataStore();
+
+
+    getYouTubeVideoId(url);
+    console.log(videoId, url)
 
     // Fonction pour update le url
 
@@ -155,7 +185,7 @@ function SettingBar() {
             <div className="flex flex-col gap-5 items-center w-full py-2 px-3">
                 <div className="flex items-center w-full justify-between">
                     <h3>Advance configuration</h3>
-                    <input value={isAdvance} onChange={HandleChangeAdvance} type="checkbox" className="toggle toggle-warning focus:border-none" />
+                    <input value={!isAdvance} onChange={HandleChangeAdvance} type="checkbox" className="toggle toggle-warning focus:border-none" />
                 </div>
 
                 {
@@ -188,7 +218,7 @@ function SettingBar() {
                                             <div className="bg-neutral-900 rounded-sm text-[10px] text-center justify-center flex items-center p-[3px] h-5 w-6">{formatSize(textSize)}</div>
                                         }
                                     </div>
-                                    <div className="w-[60%] flex items-center h-[15px] bg-neutral-600 rounded-md"><input onChange={HandleChangeTextSize} type="range" min={20} max="100" value={textSize} className="range w-full range-xs h-[15px] range-warning" /></div>
+                                    <div className="w-[60%] flex items-center h-[15px] bg-neutral-600 rounded-md"><input onChange={HandleChangeTextSize} type="range" min={40} max="100" value={textSize} className="range w-full range-xs h-[15px] range-warning" /></div>
                                 </div>
                             </li>
 
@@ -203,7 +233,7 @@ function SettingBar() {
                                             <div className="bg-neutral-900 rounded-sm text-[10px] text-center justify-center flex items-center p-[3px] h-5 w-6">x{(spacing / 50).toFixed(2)}</div>
                                         }
                                     </div>
-                                    <div className="w-[60%] flex items-center h-[15px] bg-neutral-600 rounded-md"><input onChange={HandleChangeSpacing} type="range" min={50} max="100" value={spacing} className="range w-full range-xs h-[15px] range-warning" /></div>
+                                    <div className="w-[60%] flex items-center h-[15px] bg-neutral-600 rounded-md"><input onChange={HandleChangeSpacing} type="range" min={0} max="100" value={spacing} className="range w-full range-xs h-[15px] range-warning" /></div>
                                 </div>
                             </li>
                         </ul>
@@ -215,7 +245,7 @@ function SettingBar() {
             <div className="divider divider-neutral my-0"></div>
 
             <div className="flex items-center justify-between w-full py-2 px-3">
-                <button className="border-[1px] hover:scale-90 border-neutral-800 bg-neutral-800 p-2 rounded-md w-[100px] flex items-center justify-center ">Copy</button>
+                <button  onClick={simulateAsyncOperation} className="border-[1px] hover:scale-90 border-neutral-800 bg-neutral-800 p-2 rounded-md w-[100px] flex items-center justify-center ">Copy</button>
                 <button className="border-[1px] hover:scale-90 bg-neutral-800 border-neutral-800 p-2 rounded-md flex items-center justify-center ">Download</button>
             </div>
 

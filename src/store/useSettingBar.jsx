@@ -11,10 +11,32 @@ const useSettingBarStore = create(
       durationClicked: false,
       isDark: false,
       size: 3,
-      isAdvance: false,
+      isAdvance: true,
       rounding: 40,
       textSize: 40,
       spacing: 50,
+
+
+      
+      videoId: '',
+      duration: '',
+      date: '',
+      channel: '',
+      views: 0,
+      title: '',
+      thumbnailImage: '',
+      authorPhoto: '',
+      // Actions pour mettre à jour les états
+      setVideoId: (id) => set({ videoId: id }),
+      setDuration: (duration) => set({ duration }),
+      setDate: (date) => set({ date }),
+      setChannel: (channel) => set({ channel }),
+      setViews: (views) => set({ views }),
+      setTitle: (title) => set({ title }),
+      setThumbnailImage: (thumbnailImage) => set({ thumbnailImage }),
+      setAuthorPhoto: (authorPhoto) => set({ authorPhoto }),
+
+      
       // Actions pour mettre à jour les états
       setProgress: (value) => set({ progress: value }),
       setUrl: (value)  => set({ url: value}),
