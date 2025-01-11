@@ -22,8 +22,8 @@ const useSettingBarStore = create(
       duration: '',
       date: '',
       channel: '',
-      views: 0,
-      title: '',
+      views: 34567654,
+      title: 'Hello world',
       thumbnailImage: '',
       authorPhoto: '',
       // Actions pour mettre à jour les états
@@ -36,7 +36,7 @@ const useSettingBarStore = create(
       setThumbnailImage: (thumbnailImage) => set({ thumbnailImage }),
       setAuthorPhoto: (authorPhoto) => set({ authorPhoto }),
 
-      
+
       // Actions pour mettre à jour les états
       setProgress: (value) => set({ progress: value }),
       setUrl: (value)  => set({ url: value}),

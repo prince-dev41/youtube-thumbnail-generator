@@ -54,8 +54,6 @@ function SettingBar() {
         setSpacing
     } = useSettingBarStore();
 
-    const {videoId, setVideoId} = useThumbnailDataStore();
-
 
     getYouTubeVideoId(url);
     console.log(videoId, url)
