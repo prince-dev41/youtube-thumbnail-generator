@@ -5,7 +5,7 @@ import { persist } from 'zustand/middleware';
 const useThumbnailDataStore = create(
   persist(
     (set) => ({
-      videoId: '',
+      videoId: '1UMXGa3-TRc',
       duration: '',
       date: '',
       channel: '',
