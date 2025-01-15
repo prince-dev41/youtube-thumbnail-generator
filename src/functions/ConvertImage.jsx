@@ -2,7 +2,7 @@
 export const convertImageToLocal = async (imageUrl) => {
     try {
         // Télécharge l'image via fetch
-        const response = await fetch(imageUrl, { mode: 'cors' });
+        const response = await fetch(imageUrl);
         if (!response.ok) {
             throw new Error(`Erreur lors du téléchargement de l'image : ${response.statusText}`);
         }
