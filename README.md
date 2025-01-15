@@ -55,7 +55,7 @@ Pour utiliser ou contribuer à ce projet, suivez ces étapes :
 3. Générez une clé API.
 4. Ajoutez la clé API dans un fichier `.env` à la racine du projet :
    ```env
-   VITE_YOUTUBE_API_KEY=Votre_Clé_API
+  VITE_API_YOUTUBE=Votre_Clé_API
    ```
 
 ---
